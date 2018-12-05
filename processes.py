@@ -14,7 +14,7 @@ elements_before = ['V', 'B']
 elements_after  = ['B', 'V']
 
 # Only on Oxygen sites.
-basis_sites     = [1, 3, 5, 7, 9, 11, 13, 15]
+basis_sites     = [0]
 
 
 #rates
