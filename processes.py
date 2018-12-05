@@ -14,7 +14,7 @@ elements_after = ['V', 'B']
 elements_before  = ['B', 'V']
 
 # Only on Oxygen sites.
-basis_sites     = [1]
+basis_sites     = [1, 3, 5, 7, 9, 11, 13, 15]
 
 
 #rates
@@ -53,7 +53,6 @@ processes.append( KMCProcess(coordinates=coordinates,
                              basis_sites=basis_sites,
                              rate_constant=rate_constant) )
 
-basis_sites = [15]
 coordinates = [[0.25, 0.25, 0.25],
                [0.5, 1.0, 0.0]]
 processes.append( KMCProcess(coordinates=coordinates,
@@ -83,7 +82,6 @@ processes.append( KMCProcess(coordinates=coordinates,
                              basis_sites=basis_sites,
                              rate_constant=rate_constant) )
 
-basis_sites = [3]
 coordinates = [[0.25, 0.25, 0.75],
                [0.5, 0.5, 0.5]]
 processes.append( KMCProcess(coordinates=coordinates,
@@ -113,7 +111,6 @@ processes.append( KMCProcess(coordinates=coordinates,
                              basis_sites=basis_sites,
                              rate_constant=rate_constant) )
 
-basis_sites = [7]
 coordinates = [[0.75, 0.75, 0.75],
                [0.5, 0.5, 0.5]]
 processes.append( KMCProcess(coordinates=coordinates,
@@ -143,7 +140,6 @@ processes.append( KMCProcess(coordinates=coordinates,
                              basis_sites=basis_sites,
                              rate_constant=rate_constant) )
 
-basis_sites = [9]
 coordinates = [[0.75, 0.25, 0.25],
                [0.5, 0.5, 0.5]]
 processes.append( KMCProcess(coordinates=coordinates,
@@ -173,7 +169,6 @@ processes.append( KMCProcess(coordinates=coordinates,
                              basis_sites=basis_sites,
                              rate_constant=rate_constant) )
 
-basis_sites = [11]
 coordinates = [[0.0, 0.0, 0.5],
                [0.25, 0.25, 0.75]]
 processes.append( KMCProcess(coordinates=coordinates,
@@ -203,7 +198,6 @@ processes.append( KMCProcess(coordinates=coordinates,
                              basis_sites=basis_sites,
                              rate_constant=rate_constant) )
 
-basis_sites = [13]
 coordinates = [[0.5, 0.0, 0.0],
                [0.75, 0.25, 0.25]]
 processes.append( KMCProcess(coordinates=coordinates,
@@ -232,7 +226,6 @@ processes.append( KMCProcess(coordinates=coordinates,
                              elements_after=elements_after,
                              basis_sites=basis_sites,
                              rate_constant=rate_constant) )
-basis_sites = [15]
 coordinates = [[0.0, 0.5, 0.0],
                [0.25, 0.75, 0.25]]
 processes.append( KMCProcess(coordinates=coordinates,
@@ -265,4 +258,4 @@ processes.append( KMCProcess(coordinates=coordinates,
 # The final interactions object.
 interactions = KMCInteractions(
     processes=processes,
-    implicit_wildcards=True)
+    implicit_wildcards=False)
