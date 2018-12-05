@@ -50,7 +50,7 @@ types = ['Ge']*128
 for i in range(128):
     if (i % 2 == 1):
         types[i] = 'V'
-types[15] = 'B'
+types[1] = 'B'
 print (types)
 
 possible_types = ['Ge', 'B', 'V']
