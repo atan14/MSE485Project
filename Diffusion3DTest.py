@@ -31,7 +31,7 @@ class Diffusion3DTest(unittest.TestCase):
         configuration = KMCConfigurationFromScript(c_file)
 
         # Set the parameters.
-        control_parameters = KMCControlParameters(number_of_steps=30000,
+        control_parameters = KMCControlParameters(number_of_steps=300000,
                                                   dump_interval=1000,
                                                   analysis_interval=1,
                                                   seed=1994669)

@@ -39,7 +39,7 @@ unit_cell = KMCUnitCell(
 # Note that we run with periodicity in y and z but not in x.
 lattice = KMCLattice(
     unit_cell=unit_cell,
-    repetitions=(2,2,2),
+    repetitions=(10,10,10),
     periodic=(True, True, True))
 
 # -----------------------------------------------------------------------------
