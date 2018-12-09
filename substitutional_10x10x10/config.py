@@ -47,7 +47,7 @@ for i in range(40):
 idx = random.randint(1, num_atoms)
 types[idx] = 'B'
 
-possible_types = ['Ge', 'B', 'V']n
+possible_types = ['Ge', 'B', 'V']
 
 configuration = KMCConfiguration(
     lattice=lattice,
