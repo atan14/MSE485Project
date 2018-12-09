@@ -41,7 +41,6 @@ lattice = KMCLattice(
 num_atoms = 10*10*10*len(basis_points)
 
 types = ['Ge']*num_atoms
-
 for i in range(40):
     types[random.randint(1, num_atoms)] = 'V'
 idx = random.randint(1, num_atoms)
