@@ -1,0 +1,44 @@
+----------------------------------------
+Begin Torque Prologue (Fri Dec  7 23:50:34 2018)
+Job ID:           7976241.cc-mgmt1.campuscluster.illinois.edu
+Username:         atan14
+Group:            fa18-mse404mic-eng
+Job Name:         kmc5
+Limits:           nodes=1:ppn=12,walltime=24:00:00,neednodes=1:ppn=12
+Job Queue:        eng-instruction
+Account:          eng-instruction
+Nodes:            ccc0056
+End Torque Prologue
+----------------------------------------
+ModuleCmd_Load.c(213):ERROR:105: Unable to locate a modulefile for 'vim'
+ModuleCmd_Load.c(213):ERROR:105: Unable to locate a modulefile for 'intel/17.0'
+E
+======================================================================
+ERROR: testRun (__main__.Diffusion3DTest)
+Run the model and check the results.
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "Diffusion3DTest.py", line 52, in testRun
+    analysis=[msd_analysis])
+  File "/projects/physics/apps/KMCLib/python/src/KMCLib/CoreComponents/KMCLatticeModel.py", line 172, in run
+    raise Error("No available processes. None of the processes defined as input match any position in the configuration. Change the initial configuration or processes to run KMC.")
+Error: No available processes. None of the processes defined as input match any position in the configuration. Change the initial configuration or processes to run KMC.
+
+----------------------------------------------------------------------
+Ran 1 test in 3.635s
+
+FAILED (errors=1)
+----------------------------------------
+Begin Torque Epilogue (Fri Dec  7 23:50:38 2018)
+Job ID:           7976241.cc-mgmt1.campuscluster.illinois.edu
+Username:         atan14
+Group:            fa18-mse404mic-eng
+Job Name:         kmc5
+Session:          14870
+Limits:           nodes=1:ppn=12,walltime=24:00:00,neednodes=1:ppn=12
+Resources:        cput=00:00:05,vmem=1370100kb,walltime=00:00:04,mem=61704kb,energy_used=0
+Job Queue:        eng-instruction
+Account:          eng-instruction
+Nodes:            ccc0056
+End Torque Epilogue
+----------------------------------------
