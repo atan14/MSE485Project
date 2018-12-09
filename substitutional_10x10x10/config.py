@@ -42,11 +42,12 @@ num_atoms = 10*10*10*len(basis_points)
 
 types = ['Ge']*num_atoms
 
-for i in range(20):
+for i in range(40):
     types[random.randint(1, num_atoms)] = 'V'
-types[random.randint(1, num_atoms)] = 'B'
+idx = random.randint(1, num_atoms)
+types[idx] = 'B'
 
-possible_types = ['Ge', 'B', 'V']
+possible_types = ['Ge', 'B', 'V']n
 
 configuration = KMCConfiguration(
     lattice=lattice,
