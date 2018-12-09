@@ -265,12 +265,6 @@ processes.append( KMCProcess(coordinates=coordinates,
 elements_after = ['V', 'Ge']
 elements_before  = ['Ge', 'V']
 
-#rates
-rate_constant        = 0.25
-
-# Fill the list of processes.
-processes = []
-
 basis_sites = [7]
 coordinates = [[0.25, 0.25, 0.25],
                [0.0, 0.0, 0.0]]

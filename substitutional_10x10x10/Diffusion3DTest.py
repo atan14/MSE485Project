@@ -29,7 +29,7 @@ class Diffusion3DTest(unittest.TestCase):
         c_file    = os.path.join(directory,"config.py")
         interactions  = KMCInteractionsFromScript(p_file)
         configuration = KMCConfigurationFromScript(c_file)
-        append = '4_rate_constant_0_25'
+        append = 'rate_constant_0_25'
         traj_file_name = 'traj%s.py' %append
         msd_file_name = 'msd%s.data' %append
 
