@@ -21,7 +21,7 @@ processes = []
 
 basis_sites = [7]
 coordinates = [[0.25, 0.25, 0.25],
-               []]
+               [0.0, 0.0, 0.0]]
 processes.append( KMCProcess(coordinates=coordinates,
                              elements_before=elements_before,
                              elements_after=elements_after,
