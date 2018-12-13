@@ -38,15 +38,16 @@ unit_cell = KMCUnitCell(
 # -----------------------------------------------------------------------------
 # Lattice
 # Note that we run with periodicity in y and z but not in x.
+num_repetition = 3
 lattice = KMCLattice(
     unit_cell=unit_cell,
-    repetitions=(10,10,10),
+    repetitions=(num_repetition,num_repetition, num_repetition),
     periodic=(True, True, True))
 
 # -----------------------------------------------------------------------------
 # Configuration
 
-num_atoms = 10*10*10*16
+num_atoms = num_repetition*num_repetition*num_repetition*len(basis_points)
 
 types = ['Ge']*num_atoms
 
