@@ -164,8 +164,8 @@ processes = processes + substitutional_far_jump(elements_before, elements_after,
 elements_before = ['Ge', 'V']
 elements_after = ['V', 'Ge']
 
-E_a = 0.15
-rate_constant_near = np.exp(-E_A_near * beta) / (4 * np.exp(-E_A_near * beta))
+E_A = 0.15
+rate_constant = np.exp(-E_A * beta) / (4 * np.exp(-E_A * beta))
 
 processes = processes + substitutional_near_jump(elements_before, elements_after, rate_constant)
 
