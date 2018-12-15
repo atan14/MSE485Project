@@ -32,10 +32,11 @@ class Diffusion3DTest(unittest.TestCase):
         append = '_test1'
         traj_file_name = 'traj%s.py' %append
         msd_file_name = 'msd%s.data' %append
+        cutoff = 20
 
         # Set the parameters.
-        control_parameters = KMCControlParameters(number_of_steps=100,
-                                                  dump_interval=1,
+        control_parameters = KMCControlParameters(number_of_steps=300000,
+                                                  dump_interval=1000,
                                                   analysis_interval=1,
                                                   seed=1994669)
 
@@ -66,38 +67,46 @@ class Diffusion3DTest(unittest.TestCase):
             row = [float(r) for r in row.split('\n')[0].split(' ') if r != '']
             raw_data.append(row)
         raw_data = numpy.array(raw_data)
-        time = raw_data[:,0]
+
+        time = raw_data[:, 0]
+        msd_x = raw_data[:, 1]
+        msd_y = raw_data[:, 2]
+        msd_z = raw_data[:, 3]
+        msd_xy = raw_data[:, 4]
+        msd_xz = raw_data[:, 5]
+        msd_yz = raw_data[:, 6]
+        msd_xyz = raw_data[:, 7]
+        std_x = raw_data[:, 8]
+        std_y = raw_data[:, 9]
+        std_z = raw_data[:, 10]
+        std_xy = raw_data[:, 11]
+        std_xz = raw_data[:, 12]
+        std_yz = raw_data[:, 13]
+        std_xyz = raw_data[:, 14]
+        n_eff = raw_data[:, 15]
 
         # X direction.
-        msd = raw_data[:,1]
-        std = raw_data[:,8]
         # Confined dynamics in the X direction. Slope at large time lag
         # significantly smaller than slope at small time lag.
         D_x1 = fit(time[0:15],  msd[0:15],  std[0:15])
         D_x2 = fit(time[16:29], msd[16:29], std[16:29])
+        D_x = fit(time[cutoff:], msd_x[cutoff:], std_x[cutoff:])
 
         # Y direction.
-        msd = raw_data[:,2]
-        std = raw_data[:,9]
         # Flow motion in the Y direction. Slope is contant.
         D_y1 = fit(time[0:15],  msd[0:15],  std[0:15])
         D_y2 = fit(time[16:29], msd[16:29], std[16:29])
+        D_y = fit(time[cutoff:], msd_y[cutoff:], std_y[cutoff:])
 
         # Z direction.
-        msd = raw_data[:,3]
-        std = raw_data[:,10]
         # Flow motion in the Z direction. Slope at large time lag
         # significantly larger than slope at small time lag.
         D_z1 = fit(time[0:15],  msd[0:15],  std[0:15])
         D_z2 = fit(time[16:29], msd[16:29], std[16:29])
+        D_z = fit(time[cutoff:], msd_z[cutoff:], std_z[cutoff:])
 
         print ("D_x1, D_x2, D_y1, D_y2, D_z1, D_z2", D_x1, D_x2, D_y1, D_y2, D_z1, D_z2)
-        # self.assertAlmostEqual(D_x1,  9.6904604529, 10)
-        # self.assertAlmostEqual(D_x2, 5.28485172992, 10)
-        # self.assertAlmostEqual(D_y1, 12.2434598296, 10)
-        # self.assertAlmostEqual(D_y2, 12.4080915647, 10)
-        # self.assertAlmostEqual(D_z1, 13.2233073435, 10)
-        # self.assertAlmostEqual(D_z2, 19.1751372532, 10)
+        print ("D_x = %.5f, D_y = %.5f, D_z = %.5f" %(D_x, D_y, D_z))
 
 
 def fit(time, msd, std):
