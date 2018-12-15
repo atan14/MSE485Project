@@ -5,6 +5,7 @@
 #
 
 from KMCLib import *
+import numpy as np
 # -----------------------------------------------------------------------------
 # Interactions
 
