@@ -1,12 +1,12 @@
 #!/bin/bash
 
 #PBS -l nodes=1:ppn=12 # use 1 node
-#PBS -N kmc5 # set job name
+#PBS -N interstitial_300000_1 # set job name
 #PBS -V
 #PBS -l walltime=24:00:00 # set wall time
 #PBS -q eng-instruction
-#PBS -o /home/atan14/mse485project/interstitial_10x10x10/rate_constant4_0_25.log
+#PBS -o /home/atan14/MSE485Project/Ge/interstitial_10x10x10/interstitial_300000_1.log
 
-cd /home/atan14/mse485project/interstitial_10x10x10/
+cd /home/atan14/MSE485Project/Ge/interstitial_10x10x10/
 
 python Diffusion3DTest.py

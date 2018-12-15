@@ -44,7 +44,7 @@ class Diffusion3DTest(unittest.TestCase):
         msd_analysis = OnTheFlyMSD(history_steps=200,
                                    n_bins=100,
                                    t_max=100.0,
-                                   track_type="V")
+                                   track_type="B")
 
         # Put the model together and run.
         model = KMCLatticeModel(configuration, interactions)
