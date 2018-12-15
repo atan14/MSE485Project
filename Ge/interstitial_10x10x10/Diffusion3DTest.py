@@ -88,21 +88,21 @@ class Diffusion3DTest(unittest.TestCase):
         # X direction.
         # Confined dynamics in the X direction. Slope at large time lag
         # significantly smaller than slope at small time lag.
-        D_x1 = fit(time[0:15],  msd[0:15],  std[0:15])
-        D_x2 = fit(time[16:29], msd[16:29], std[16:29])
+        D_x1 = fit(time[0:15], msd_x[0:15], std_x[0:15])
+        D_x2 = fit(time[16:29], msd_x[16:29], std_x[16:29])
         D_x = fit(time[cutoff:], msd_x[cutoff:], std_x[cutoff:])
 
         # Y direction.
         # Flow motion in the Y direction. Slope is contant.
-        D_y1 = fit(time[0:15],  msd[0:15],  std[0:15])
-        D_y2 = fit(time[16:29], msd[16:29], std[16:29])
+        D_y1 = fit(time[0:15], msd_y[0:15], std_y[0:15])
+        D_y2 = fit(time[16:29], msd_y[16:29], std_y[16:29])
         D_y = fit(time[cutoff:], msd_y[cutoff:], std_y[cutoff:])
 
         # Z direction.
         # Flow motion in the Z direction. Slope at large time lag
         # significantly larger than slope at small time lag.
-        D_z1 = fit(time[0:15],  msd[0:15],  std[0:15])
-        D_z2 = fit(time[16:29], msd[16:29], std[16:29])
+        D_z1 = fit(time[0:15], msd_z[0:15], std_z[0:15])
+        D_z2 = fit(time[16:29], msd_z[16:29], std_z[16:29])
         D_z = fit(time[cutoff:], msd_z[cutoff:], std_z[cutoff:])
 
         print ("D_x1, D_x2, D_y1, D_y2, D_z1, D_z2", D_x1, D_x2, D_y1, D_y2, D_z1, D_z2)
