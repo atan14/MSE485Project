@@ -29,6 +29,7 @@ rate_constant_far = np.exp(-E_A_far * beta) / (
 
 # Fill the list of processes.
 def interstitial_near_jump(elements_before, elements_after, rate_constant):
+    from KMCLib import *
     from operator import add
 
     basis_points = [[0.0, 0.0, 0.0],  # 0
@@ -84,6 +85,7 @@ def interstitial_near_jump(elements_before, elements_after, rate_constant):
 
 def interstitial_far_jump(elements_before, elements_after, rate_constant):
     from operator import add, sub, mod
+    from KMCLib import *
 
     basis_points = [[0.0, 0.0, 0.0],  # 0
                     [0.5, 0.5, 0.5],  # 1

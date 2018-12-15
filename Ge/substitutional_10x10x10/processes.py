@@ -11,6 +11,7 @@ from KMCLib import *
 # Define processes.
 def substitutional_near_jump(elements_before, elements_after, rate_constant):
     from operator import add
+    from KMCLib import *
 
     basis_points = [[0.0, 0.0, 0.0],  # 0
                     [0.25, 0.75, 0.75],  # 1
@@ -58,6 +59,7 @@ def substitutional_near_jump(elements_before, elements_after, rate_constant):
 
 def substitutional_far_jump(elements_before, elements_after, rate_constant):
     from operator import add, mod
+    from KMCLib import *
 
     basis_points = [[0.0, 0.0, 0.0],  # 0
                     [0.25, 0.75, 0.75],  # 1
