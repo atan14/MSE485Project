@@ -35,7 +35,7 @@ class Diffusion3DTest(unittest.TestCase):
         cutoff = 20
 
         # Set the parameters.
-        control_parameters = KMCControlParameters(number_of_steps=3000,
+        control_parameters = KMCControlParameters(number_of_steps=10000,
                                                   dump_interval=100,
                                                   analysis_interval=1,
                                                   seed=1994669)
