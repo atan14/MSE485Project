@@ -35,11 +35,12 @@ def substitutional_near_jump(elements_before, elements_after, rate_constant):
                  [-0.5, 0.5, 0.0],
                  [-0.5, -0.5, 0.0]]
 
-
+    
     processes = []
     i=0
     n=0
     while (i<len(basis_points)):
+        n=0
         while (n<len(direction)):
             jump1 = list(map(add, basis_points[i], direction[n]))
             coordinates = [basis_points[i], jump1]
