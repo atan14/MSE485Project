@@ -54,7 +54,13 @@ types = ['Ge']*num_atoms
 for i in range(len(types)):
     if (i % 2 == 1):
         types[i] = 'V'
-types[random.randint(1, num_atoms)] = 'B'
+rn = random.randint(1, num_atoms)
+if (rn%2==0):
+    if(rn==num_atoms):
+        rn=rn-1
+    else:
+        rn=rn+1
+types[rn] = 'B'
 
 possible_types = ['Ge', 'B', 'V']
 

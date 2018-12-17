@@ -29,13 +29,13 @@ class Diffusion3DTest(unittest.TestCase):
         c_file    = os.path.join(directory,"config.py")
         interactions  = KMCInteractionsFromScript(p_file)
         configuration = KMCConfigurationFromScript(c_file)
-        append = '_test1'
+        append = '_test2'
         traj_file_name = 'traj%s.py' %append
         msd_file_name = 'msd%s.data' %append
         cutoff = 20
 
         # Set the parameters.
-        control_parameters = KMCControlParameters(number_of_steps=300000,
+        control_parameters = KMCControlParameters(number_of_steps=30000,
                                                   dump_interval=1000,
                                                   analysis_interval=1,
                                                   seed=1994669)
