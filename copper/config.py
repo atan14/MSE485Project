@@ -10,18 +10,14 @@ import random
 # -----------------------------------------------------------------------------
 # Unit cell
 
-cell_vectors = [[   5.762860e+00,   0.000000e+00,   0.000000e+00],
-                [   0.000000e+00,   5.762860e+00,   0.000000e+00],
-                [   0.000000e+00,   0.000000e+00,   5.762860e+00]]
+cell_vectors = [[   3.621263e+00,   0.000000e+00,   0.000000e+00],
+                [   0.000000e+00,   3.621263e+00,   0.000000e+00],
+                [   0.000000e+00,   0.000000e+00,   3.621263e+00]]
 
 basis_points = [[0.0, 0.0, 0.0], #0
-                [0.25, 0.75, 0.75], #1
+                [0.5, 0.5, 0.0], #1
                 [0.5, 0.0, 0.5],#2
-                [0.0, 0.5, 0.5],#3
-                [0.5, 0.5, 0.0], #4
-                [0.75, 0.25, 0.75],#5
-                [0.75, 0.75, 0.25], #6
-                [0.25, 0.25, 0.25]] #7
+                [0.0, 0.5, 0.5]] #3
 
 unit_cell = KMCUnitCell(
     cell_vectors=cell_vectors,
@@ -40,13 +36,12 @@ lattice = KMCLattice(
 
 num_atoms = 10*10*10*len(basis_points)
 
-types = ['Ge']*num_atoms
+types = ['Cu']*num_atoms
 for i in range(40):
     types[random.randint(1, num_atoms)] = 'V'
 idx = random.randint(1, num_atoms)
-types[idx] = 'B'
 
-possible_types = ['Ge', 'B', 'V']
+possible_types = ['Cu', 'V']
 
 configuration = KMCConfiguration(
     lattice=lattice,

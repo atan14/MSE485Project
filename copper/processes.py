@@ -5,258 +5,62 @@
 #
 
 from KMCLib import *
+import numpy as np 
+from operator import add
 # -----------------------------------------------------------------------------
 # Interactions
 
 
-# Boron - Vacancy jump.
-elements_after = ['V', 'B']
-elements_before  = ['B', 'V']
 
-#rates
-rate_constant        = 1.0
 
 # Fill the list of processes.
+def substitutional_near_jump(elements_before, elements_after, rate_constant)
+    basis_points = [[0.0, 0.0, 0.0], #0
+                    [0.5, 0.5, 0.0], #1
+                    [0.5, 0.0, 0.5],#2
+                    [0.0, 0.5, 0.5]] #3
+
+    direction = [[0.5, 0.0, 0.5],
+                 [0.5, 0.0, -0.5],
+                 [-0.5, 0.0, -0.5],
+                 [-0.5, 0.0, 0.5],
+                 [0.0, 0.5, 0.5],
+                 [0.0, 0.5, -0.5],
+                 [0.0, -0.5, 0.5],
+                 [0.0, -0.5, -0.5],
+                 [0.5, 0.5, 0.0],
+                 [0.5, -0.5, 0.0],
+                 [-0.5, 0.5, 0.0],
+                 [-0.5, -0.5, 0.0]]
+
+
+    processes = []
+    for i in len(basis_points):
+        for n in len(direction):
+            jump1 = list(map(add, basis_points[i], direction[n]))
+            coordinates = [basis_points[i], jump1]
+            processes.append(KMCProcess(coordinates=coordinates,
+                                        elements_before=elements_before,
+                                        elements_after=elements_after,
+                                        basis_sites=[basis_idx],
+                                        rate_constant=rate_constant))
+    return processes
+
+#Set parameters
+T = 800 #Kelvin
+beta = 1/(*.617E-5 * T) # eV
+
+# Copper - Vacancy jump.
+elements_after = ['V', 'Cu']
+elements_before  = ['Cu', 'V']
+
+#rates
+rate_constant        = .083333
+
+#list all of the processes
 processes = []
+processes = processes + substitutional_near_jump(elements_before, elements_after, rate_constant)
 
-basis_sites = [1]
-coordinates = [[0.5, 0.5, 0.5],
-               [0.75, 0.25, 0.25]]
-processes.append( KMCProcess(coordinates=coordinates,
-                             elements_before=elements_before,
-                             elements_after=elements_after,
-                             basis_sites=basis_sites,
-                             rate_constant=rate_constant) )
-coordinates = [[0.5, 0.5, 0.5],
-               [0.75, 0.75, 0.75]]
-processes.append( KMCProcess(coordinates=coordinates,
-                             elements_before=elements_before,
-                             elements_after=elements_after,
-                             basis_sites=basis_sites,
-                             rate_constant=rate_constant) )
-coordinates = [[0.5, 0.5, 0.5],
-               [0.25, 0.75, 0.25]]
-processes.append( KMCProcess(coordinates=coordinates,
-                             elements_before=elements_before,
-                             elements_after=elements_after,
-                             basis_sites=basis_sites,
-                             rate_constant=rate_constant) )
-coordinates = [[0.5, 0.5, 0.5],
-               [0.25, 0.25, 0.75]]
-processes.append( KMCProcess(coordinates=coordinates,
-                             elements_before=elements_before,
-                             elements_after=elements_after,
-                             basis_sites=basis_sites,
-                             rate_constant=rate_constant) )
-
-basis_sites = [5]
-coordinates = [[0.25, 0.75, 0.25],
-               [0.5, 1.0, 0.0]]
-processes.append( KMCProcess(coordinates=coordinates,
-                             elements_before=elements_before,
-                             elements_after=elements_after,
-                             basis_sites=basis_sites,
-                             rate_constant=rate_constant) )
-coordinates = [[0.25, 0.75, 0.25],
-               [0.0, 0.5, 0.0]]
-processes.append( KMCProcess(coordinates=coordinates,
-                             elements_before=elements_before,
-                             elements_after=elements_after,
-                             basis_sites=basis_sites,
-                             rate_constant=rate_constant) )
-coordinates = [[0.25, 0.75, 0.25],
-               [0.0, 1.0, 0.5]]
-processes.append( KMCProcess(coordinates=coordinates,
-                             elements_before=elements_before,
-                             elements_after=elements_after,
-                             basis_sites=basis_sites,
-                             rate_constant=rate_constant) )
-coordinates = [[0.25, 0.75, 0.25],
-               [0.5, 0.5, 0.5]]
-processes.append( KMCProcess(coordinates=coordinates,
-                             elements_before=elements_before,
-                             elements_after=elements_after,
-                             basis_sites=basis_sites,
-                             rate_constant=rate_constant) )
-
-basis_sites = [3]
-coordinates = [[0.25, 0.25, 0.75],
-               [0.5, 0.5, 0.5]]
-processes.append( KMCProcess(coordinates=coordinates,
-                             elements_before=elements_before,
-                             elements_after=elements_after,
-                             basis_sites=basis_sites,
-                             rate_constant=rate_constant) )
-coordinates = [[0.25, 0.25, 0.75],
-               [0.0, 0.5, 1.0]]
-processes.append( KMCProcess(coordinates=coordinates,
-                             elements_before=elements_before,
-                             elements_after=elements_after,
-                             basis_sites=basis_sites,
-                             rate_constant=rate_constant) )
-coordinates = [[0.25, 0.25, 0.75],
-               [0.0, 0.0, 0.5]]
-processes.append( KMCProcess(coordinates=coordinates,
-                             elements_before=elements_before,
-                             elements_after=elements_after,
-                             basis_sites=basis_sites,
-                             rate_constant=rate_constant) )
-coordinates = [[0.25, 0.25, 0.75],
-               [0.5, 0.0, 1.0]]
-processes.append( KMCProcess(coordinates=coordinates,
-                             elements_before=elements_before,
-                             elements_after=elements_after,
-                             basis_sites=basis_sites,
-                             rate_constant=rate_constant) )
-
-basis_sites = [7]
-coordinates = [[0.75, 0.75, 0.75],
-               [0.5, 0.5, 0.5]]
-processes.append( KMCProcess(coordinates=coordinates,
-                             elements_before=elements_before,
-                             elements_after=elements_after,
-                             basis_sites=basis_sites,
-                             rate_constant=rate_constant) )
-coordinates = [[0.75, 0.75, 0.75],
-               [1.0, 0.5, 1.0]]
-processes.append( KMCProcess(coordinates=coordinates,
-                             elements_before=elements_before,
-                             elements_after=elements_after,
-                             basis_sites=basis_sites,
-                             rate_constant=rate_constant) )
-coordinates = [[0.75, 0.75, 0.75],
-               [0.5, 1.0, 1.0]]
-processes.append( KMCProcess(coordinates=coordinates,
-                             elements_before=elements_before,
-                             elements_after=elements_after,
-                             basis_sites=basis_sites,
-                             rate_constant=rate_constant) )
-coordinates = [[0.75, 0.75, 0.75],
-               [1.0, 1.0, 0.5]]
-processes.append( KMCProcess(coordinates=coordinates,
-                             elements_before=elements_before,
-                             elements_after=elements_after,
-                             basis_sites=basis_sites,
-                             rate_constant=rate_constant) )
-
-basis_sites = [9]
-coordinates = [[0.75, 0.25, 0.25],
-               [0.5, 0.5, 0.5]]
-processes.append( KMCProcess(coordinates=coordinates,
-                             elements_before=elements_before,
-                             elements_after=elements_after,
-                             basis_sites=basis_sites,
-                             rate_constant=rate_constant) )
-coordinates = [[0.75, 0.25, 0.25],
-               [1.0, 0.5, 0.0]]
-processes.append( KMCProcess(coordinates=coordinates,
-                             elements_before=elements_before,
-                             elements_after=elements_after,
-                             basis_sites=basis_sites,
-                             rate_constant=rate_constant) )
-coordinates = [[0.75, 0.25, 0.25],
-               [0.5, 0.0, 0.0]]
-processes.append( KMCProcess(coordinates=coordinates,
-                             elements_before=elements_before,
-                             elements_after=elements_after,
-                             basis_sites=basis_sites,
-                             rate_constant=rate_constant) )
-coordinates = [[0.75, 0.25, 0.25],
-               [1.0, 0.0, 0.5]]
-processes.append( KMCProcess(coordinates=coordinates,
-                             elements_before=elements_before,
-                             elements_after=elements_after,
-                             basis_sites=basis_sites,
-                             rate_constant=rate_constant) )
-
-basis_sites = [11]
-coordinates = [[0.0, 0.0, 0.5],
-               [0.25, 0.25, 0.75]]
-processes.append( KMCProcess(coordinates=coordinates,
-                             elements_before=elements_before,
-                             elements_after=elements_after,
-                             basis_sites=basis_sites,
-                             rate_constant=rate_constant) )
-coordinates = [[0.0, 0.0, 0.5],
-               [-0.25, 0.25, 0.25]]
-processes.append( KMCProcess(coordinates=coordinates,
-                             elements_before=elements_before,
-                             elements_after=elements_after,
-                             basis_sites=basis_sites,
-                             rate_constant=rate_constant) )
-coordinates = [[0.0, 0.0, 0.5],
-               [0.25, -0.25, 0.25]]
-processes.append( KMCProcess(coordinates=coordinates,
-                             elements_before=elements_before,
-                             elements_after=elements_after,
-                             basis_sites=basis_sites,
-                             rate_constant=rate_constant) )
-coordinates = [[0.0, 0.0, 0.5],
-               [-0.25, -0.25, 0.75]]
-processes.append( KMCProcess(coordinates=coordinates,
-                             elements_before=elements_before,
-                             elements_after=elements_after,
-                             basis_sites=basis_sites,
-                             rate_constant=rate_constant) )
-
-basis_sites = [13]
-coordinates = [[0.5, 0.0, 0.0],
-               [0.75, 0.25, 0.25]]
-processes.append( KMCProcess(coordinates=coordinates,
-                             elements_before=elements_before,
-                             elements_after=elements_after,
-                             basis_sites=basis_sites,
-                             rate_constant=rate_constant) )
-coordinates = [[0.5, 0.0, 0.0],
-               [0.25, 0.25, -0.25]]
-processes.append( KMCProcess(coordinates=coordinates,
-                             elements_before=elements_before,
-                             elements_after=elements_after,
-                             basis_sites=basis_sites,
-                             rate_constant=rate_constant) )
-coordinates = [[0.5, 0.0, 0.0],
-               [0.25, -0.25, 0.25]]
-processes.append( KMCProcess(coordinates=coordinates,
-                             elements_before=elements_before,
-                             elements_after=elements_after,
-                             basis_sites=basis_sites,
-                             rate_constant=rate_constant) )
-coordinates = [[0.5, 0.0, 0.0],
-               [0.75, -0.25, -0.25]]
-processes.append( KMCProcess(coordinates=coordinates,
-                             elements_before=elements_before,
-                             elements_after=elements_after,
-                             basis_sites=basis_sites,
-                             rate_constant=rate_constant) )
-basis_sites = [15]
-coordinates = [[0.0, 0.5, 0.0],
-               [0.25, 0.75, 0.25]]
-processes.append( KMCProcess(coordinates=coordinates,
-                             elements_before=elements_before,
-                             elements_after=elements_after,
-                             basis_sites=basis_sites,
-                             rate_constant=rate_constant) )
-coordinates = [[0.0, 0.5, 0.0],
-               [-0.25, 0.75, -0.25]]
-processes.append( KMCProcess(coordinates=coordinates,
-                             elements_before=elements_before,
-                             elements_after=elements_after,
-                             basis_sites=basis_sites,
-                             rate_constant=rate_constant) )
-coordinates = [[0.0, 0.5, 0.0],
-               [-0.25, 0.25, 0.25]]
-processes.append( KMCProcess(coordinates=coordinates,
-                             elements_before=elements_before,
-                             elements_after=elements_after,
-                             basis_sites=basis_sites,
-                             rate_constant=rate_constant) )
-coordinates = [[0.0, 0.5, 0.0],
-               [0.25, 0.25, -0.25]]
-processes.append( KMCProcess(coordinates=coordinates,
-                             elements_before=elements_before,
-                             elements_after=elements_after,
-                             basis_sites=basis_sites,
-                             rate_constant=rate_constant) )
 
 # The final interactions object.
 interactions = KMCInteractions(
