@@ -35,8 +35,8 @@ class Diffusion3DTest(unittest.TestCase):
         cutoff = 20
 
         # Set the parameters.
-        control_parameters = KMCControlParameters(number_of_steps=300000,
-                                                  dump_interval=1000,
+        control_parameters = KMCControlParameters(number_of_steps=3000,
+                                                  dump_interval=100,
                                                   analysis_interval=1,
                                                   seed=1994669)
 
@@ -44,7 +44,7 @@ class Diffusion3DTest(unittest.TestCase):
         msd_analysis = OnTheFlyMSD(history_steps=200,
                                    n_bins=100,
                                    t_max=100.0,
-                                   track_type="B")
+                                   track_type="V")
 
         # Put the model together and run.
         model = KMCLatticeModel(configuration, interactions)
