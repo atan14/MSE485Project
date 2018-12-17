@@ -37,9 +37,9 @@ lattice = KMCLattice(
 num_atoms = 10*10*10*len(basis_points)
 
 types = ['Cu']*num_atoms
-#for i in range(2):
-#    types[random.randint(1, num_atoms)] = 'V'
-types[random.randint(1, num_atoms)]='V'
+for i in range(2):
+    types[random.randint(1, num_atoms)] = 'V'
+
 possible_types = ['Cu', 'V']
 
 configuration = KMCConfiguration(
